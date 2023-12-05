@@ -1,8 +1,11 @@
 import React from 'react';
 
+import {connect} from 'react-redux'
+import { toggleEditing } from '../actions/titleActions';
+
+
 const TitleDisplay = (props)=> {
   const handleClick = () => {
-    props.handleToggleEditing();
   }
 
   return(<h2>
@@ -12,6 +15,13 @@ const TitleDisplay = (props)=> {
         onClick={handleClick}
       />
   </h2>);
+
 }
 
-export default TitleDisplay;
+const mapStateToProps = (state) => {
+  return {
+    title: state.title.title
+  }
+}
+
+export default connect(mapStateToProps, {toggleEditing: toggleEditing})(TitleDisplay);

@@ -1,3 +1,5 @@
+import { UPDATE_NEW_MEMBER, ADD_MEMBER } from "../actions/dragonListActions";
+
 export const initialState = {
     newMember: '',
     members: [
@@ -17,7 +19,7 @@ const dragonReducer = (state = initialState, action) => {
     case ADD_MEMBER:
       return {
         ...state,
-        members: {...state.members, action.payload} 
+        members: [...state.members, action.payload] 
       };
     default:
       return state;

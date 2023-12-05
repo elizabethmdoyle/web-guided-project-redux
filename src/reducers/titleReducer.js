@@ -1,16 +1,22 @@
-import { UPDATE_TITLE, TOGGLE_EDITING} from './../actions/titleActions';
+import { UPDATE_NEW_TITLE, UPDATE_TITLE, TOGGLE_EDITING} from './../actions/titleActions';
 
 export const initialState = {
-    appName: "Redux Test",
+    newTitle: "",
     title: "Dragon Member List 🐲",
     editing: false
   };
   
 const titleReducer = (state = initialState, action) => {
   switch (action.type) {
+    case UPDATE_NEW_TITLE:
+    return {
+      ...state, 
+      newTitle: action.payload,
+    }
     case UPDATE_TITLE:
       return {
         ...state,
+        newTitle: '',
         title: action.payload,
         editing: false
       };
@@ -24,4 +30,5 @@ const titleReducer = (state = initialState, action) => {
   }
 };
 
-export default titleReducer;
+
+export default titleReducer
